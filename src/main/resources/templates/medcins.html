@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Medcins</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+		
+</head>
+<body>
+	<div layout:fragment="custom-content">
+	<div class="container spacer" >
+		<form th:action="@{/admin/medcins}" method="get">
+			<label>Mot clé : </label>
+			<input type="text" name="mc" th:value="${mc}"/>
+			<button class="btn btn-primary">Chercher</button>
+		</form>
+	</div>
+
+	<div class="container">
+	<h3>Liste des Medcins</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th><th>Nom</th><th>Prénom</th><th>CIN</th><th>Spécialité</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="m:${listMedcins}">
+				<td th:text="${m.id}"></td>
+				<td th:text="${m.nom}"></td>
+				<td th:text="${m.prenom}"></td>
+				<td th:text="${m.cin}"></td>
+				<td th:text="${m.specialite}"></td>
+
+				<td><a th:href="@{/admin/editMedcin(id=${m.id})}">Modifier</a></td>
+				<td><a onclick="return confirm('Etes vous sure?')" th:href="@{/admin/deleteMedcin(id=${m.id},mc=${mc})}">Supprimer</a></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	</div>
+</body>
+</html>

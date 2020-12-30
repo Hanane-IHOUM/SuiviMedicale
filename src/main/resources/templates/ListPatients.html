@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout2}">
+		
+<head>
+<meta charset="utf-8"/>
+<title>Patients</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+		
+</head>
+<body>
+	<div layout:fragment="custom-content">
+	<div class="container spacer" >
+		<form th:action="@{/medcin/patients}" method="get">
+			<label>Mot clé : </label>
+			<input type="text" name="mc" th:value="${mc}"/>
+			<button class="btn btn-primary">Chercher</button>
+		</form>
+	</div>
+
+	<div class="container">
+	<h3>Liste des Patients</h3>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>ID</th><th>Nom</th><th>Prénom</th><th>CIN</th><th>Type Sang</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="p:${listPatients}">
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.nom}"></td>
+				<td th:text="${p.prenom}"></td>
+				<td th:text="${p.cin}"></td>
+				<td th:text="${p.typeSang}"></td>
+				<td><a th:href="@{/medcin/details(id=${p.id})}">Afficher Historique des consultations</a></td>
+			</tr>
+		</tbody>
+	</table>
+	</div>
+	</div>
+</body>
+</html>

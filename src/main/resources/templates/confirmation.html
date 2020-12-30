@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Patients</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+		
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+		
+</head>
+<body>
+	<div class="container spacer mil col-md-6 col-xs-12" layout:fragment="custom-content">
+		<div class="panel panel-default">
+			<div class="panel-heading">Confirmation</div>
+			<div class="panel-body">
+				<div class="form-group">
+					<label>ID : </label>
+					<label th:text="${patient.id}"></label>
+				</div>
+				<div class="form-group">
+					<label>Nom : </label>
+					<label th:text="${patient.nom}"></label>
+				</div>
+				<div class="form-group">
+					<label>Prénom : </label>
+					<label th:text="${patient.prenom}"></label>
+				</div>
+				<div class="form-group">
+					<label>CIN : </label>
+					<label th:text="${patient.cin}"></label>
+				</div>
+				<div class="form-group">
+					<label>Téléphone : </label>
+					<label th:text="${patient.tele}"></label>
+				</div>
+				<div class="form-group">
+					<label>Adresse : </label>
+					<label th:text="${patient.adress}"></label>
+				</div>
+				<div class="form-group">
+					<label>Type Sang : </label>
+					<label th:text="${patient.typeSang}"></label>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</body>
+</html>

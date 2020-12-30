@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Consultations</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+</head>
+<body>
+	<div class="container spacer mil col-md-6 col-xs-12" layout:fragment="custom-content">
+		<div class="panel panel-default">
+			<div class="panel-heading">Saisie d'une consultation</div>
+			<div class="panel-body">
+				<form th:action="@{/medcin/saveConsultation}" method="post">
+					<div class="form-group">
+						<label class="control-label">Date : </label>
+						<input class="form-control" type="text" name="date" th:value="${consultation.date}"/>
+						<span class="red" th:errors="${consultation.date}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Heure : </label>
+						<input class="form-control" type="text" name="heure" th:value="${consultation.heure}"/>
+						<span class="red" th:errors="${consultation.heure}"></span>
+					</div>	
+					
+					<div class="form-group">
+						<label class="control-label">Description: </label>
+						<input class="form-control" type="text" name="description" th:value="${consultation.description}"/>
+						<span class="red" th:errors="${consultation.description}"></span>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary">Enregistrer</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

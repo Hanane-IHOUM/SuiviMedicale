@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+		layout:decorate="~{layout}">
+<head>
+<meta charset="utf-8"/>
+<title>Patients</title>
+<link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
+		th:href="@{css/bootstrap.min.css}"/>
+
+<link rel="stylesheet" type="text/css" href="../static/css/style.css"
+		th:href="@{css/style.css}"/>
+</head>
+<body>
+	<div class="container spacer mil col-md-6 col-xs-12" layout:fragment="custom-content">
+		<div class="panel panel-default">
+			<div class="panel-heading">Saisie d'un patient</div>
+			<div class="panel-body">
+				<form th:action="@{/admin/save}" method="post">
+					<div class="form-group">
+						<label class="control-label">Nom : </label>
+						<input class="form-control" type="text" name="nom" th:value="${patient.nom}"/>
+						<span class="red" th:errors="${patient.nom}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Prénom : </label>
+						<input class="form-control" type="text" name="prenom" th:value="${patient.prenom}"/>
+						<span class="red" th:errors="${patient.prenom}"></span>
+					</div>	
+					
+					<div class="form-group">
+						<label class="control-label">CIN : </label>
+						<input class="form-control" type="text" name="cin" th:value="${patient.cin}"/>
+						<span class="red" th:errors="${patient.cin}"></span>
+					</div>
+					
+					<div class="form-group">	
+						<label class="control-label">Téléphone : </label>
+						<input class="form-control" type="text" name="tele" th:value="${patient.tele}"/>
+						<span class="red" th:errors="${patient.tele}"></span>
+					</div>
+					
+					<div class="form-group">	
+						<label class="control-label">Adresse : </label>
+						<input class="form-control" type="text" name="adress" th:value="${patient.adress}"/>
+						<span class="red" th:errors="${patient.adress}"></span>
+					</div>
+					
+					<div class="form-group">	
+						<label class="control-label">Type Sang : </label>
+						<input class="form-control" type="text" name="typeSang" th:value="${patient.typeSang}"/>
+						<span class="red" th:errors="${patient.typeSang}"></span>
+					</div>
+					<div>
+						<button type="submit" class="btn btn-primary">Enregistrer</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
