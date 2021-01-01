@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-		layout:decorate="~{layout}">
+		layout:decorate="~{layout2}">
 <head>
 <meta charset="utf-8"/>
 <title>Consultations</title>
@@ -16,10 +16,11 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Saisie d'une consultation</div>
 			<div class="panel-body">
-				<form th:action="@{/medcin/saveConsultation}" method="post">
+				<form th:action="@{/medcin/saveConsultation(id=${patient.id})}" method="post">
+
 					<div class="form-group">
 						<label class="control-label">Date : </label>
-						<input class="form-control" type="text" name="date" th:value="${consultation.date}"/>
+						<input type="date" class= "form-control date" name = "date" th:value = "${consultation.date}" />
 						<span class="red" th:errors="${consultation.date}"></span>
 					</div>
 					

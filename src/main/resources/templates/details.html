@@ -17,11 +17,12 @@
 	<div layout:fragment="custom-content">
 	
 	<div class="container spacer">
+	<a th:href="@{/medcin/formConsultation(id=${patient.id})}">Ajouter Consultation</a>
 	<h3>Historique de Patient</h3>
 	<table class="table">
 		<thead>
 			<tr>
-				<th>Date</th><th>Heure</th><th>Description</th><th>Medcin</th>
+				<th>Date</th><th>Heure</th><th>Description</th><th>Médecin</th>
 			</tr>
 		</thead>
 		<tbody>

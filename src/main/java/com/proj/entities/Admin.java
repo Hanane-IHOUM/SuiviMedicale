@@ -11,7 +11,8 @@ import javax.validation.constraints.Size;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Medcin implements Serializable{
+
+public class Admin implements Serializable{
 	
 	@Id @GeneratedValue
 	private long id;
@@ -24,53 +25,58 @@ public class Medcin implements Serializable{
 	@Size(min=3,max=15)
 	private String prenom;
 	
-	@NotNull
-	@Size(min=8,max=10)
-	private String cin;
-	
 	private int tele;
 	
 	@Size(max=50)
 	private String adress;
 	
-	//@Size(max=50)
-	private String specialite;
+	@NotNull
+	@Size(min=8,max=10)
+	private String cin;
 	
 	@Size(min=3,max=64)
 	private String password;
 	
-	//@Size(max=50)
-	private String role;
-		
+	
 	private boolean active;
-	
-	@OneToMany(targetEntity = Consultation.class, mappedBy = "medecin")
-	private List<Consultation> consultations;
-	
-	
 
-	public Medcin() {
+	private String role;
+	
+	public Admin() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 
-	public Medcin(@NotNull @Size(min = 3, max = 15) String nom, @NotNull @Size(min = 3, max = 15) String prenom,
-			@NotNull @Size(min = 8, max = 10) String cin, int tele, @Size(max = 50) String adress, String specialite,
-			@Size(min = 3, max = 64) String password, String role, boolean active, List<Consultation> consultations) {
+	
+
+
+	
+
+	public Admin(@NotNull @Size(min = 3, max = 15) String nom, @NotNull @Size(min = 3, max = 15) String prenom,
+			int tele, @Size(max = 50) String adress, @NotNull @Size(min = 8, max = 10) String cin,
+			@Size(min = 3, max = 64) String password, boolean active, String role) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
-		this.cin = cin;
 		this.tele = tele;
 		this.adress = adress;
-		this.specialite = specialite;
+		this.cin = cin;
 		this.password = password;
-		this.role = role;
 		this.active = active;
-		this.consultations = consultations;
+		this.role = role;
 	}
 
+
+
+	public String getCin() {
+		return cin;
+	}
+
+
+	public void setCin(String cin) {
+		this.cin = cin;
+	}
 
 
 	public String getRole() {
@@ -83,71 +89,35 @@ public class Medcin implements Serializable{
 	}
 
 
-	public String getCin() {
-		return cin;
-	}
-
-
-
-	public void setCin(String cin) {
-		this.cin = cin;
-	}
-
-
-
-	public boolean isActive() {
-		return active;
-	}
-
-
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-
 
 	public long getId() {
 		return id;
 	}
 
+
 	public void setId(long id) {
 		this.id = id;
 	}
+
 
 	public String getNom() {
 		return nom;
 	}
 
+
 	public void setNom(String nom) {
 		this.nom = nom;
 	}
+
 
 	public String getPrenom() {
 		return prenom;
 	}
 
+
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
-
-
-	public String getSpecialite() {
-		return specialite;
-	}
-
-	public void setSpecialite(String specialite) {
-		this.specialite = specialite;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
 
 
 	public int getTele() {
@@ -155,11 +125,9 @@ public class Medcin implements Serializable{
 	}
 
 
-
 	public void setTele(int tele) {
 		this.tele = tele;
 	}
-
 
 
 	public String getAdress() {
@@ -167,24 +135,30 @@ public class Medcin implements Serializable{
 	}
 
 
-
 	public void setAdress(String adress) {
 		this.adress = adress;
 	}
 
 
-
-	public List<Consultation> getConsultations() {
-		return consultations;
+	public String getPassword() {
+		return password;
 	}
 
 
-
-	public void setConsultations(List<Consultation> consultations) {
-		this.consultations = consultations;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
+
+	public boolean isActive() {
+		return active;
+	}
+
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
 	
-
+	
 
 }

@@ -1,20 +1,30 @@
 package com.proj.entities;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+
 @Entity
-public class Consultation {
+public class Consultation implements Serializable{
 	
 	@Id @GeneratedValue
 	private long id;
 	
-	private SimpleDateFormat date;
+
+	@Temporal(TemporalType.DATE)
+	//@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date date;
 	
 	private String heure;
 	
@@ -34,8 +44,8 @@ public class Consultation {
 	}
 
 
-	public Consultation(SimpleDateFormat date, String heure, @NotNull String description, Patient patient,
-			Medcin medecin) {
+
+	public Consultation(Date date, String heure, @NotNull String description, Patient patient, Medcin medecin) {
 		super();
 		this.date = date;
 		this.heure = heure;
@@ -43,6 +53,9 @@ public class Consultation {
 		this.patient = patient;
 		this.medecin = medecin;
 	}
+
+
+
 
 
 	public long getId() {
@@ -54,13 +67,13 @@ public class Consultation {
 		this.id = id;
 	}
 
-
-	public SimpleDateFormat getDate() {
+	
+	public Date getDate() {
 		return date;
 	}
 
 
-	public void setDate(SimpleDateFormat date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 
@@ -104,8 +117,5 @@ public class Consultation {
 		this.medecin = medecin;
 	}
 
-	
-	
-	
 
 }

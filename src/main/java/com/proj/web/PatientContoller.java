@@ -3,6 +3,7 @@ package com.proj.web;
 import java.util.List;
 import java.util.Optional;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,10 +79,16 @@ public class PatientContoller {
 		return "confirmation";
 	}
 	
-	/*@RequestMapping(value="/")
-	public String home() {
+	@RequestMapping(value="/")
+	public String home(HttpServletRequest request) {
+		boolean isAdmin = request.isUserInRole("ADMIN");
+		if(isAdmin) {
+			return "redirect:/admin/patients";
+		}
 		return "redirect:/medcin/patients";
-	}*/
+
+		//return "hello";
+	}
 	
 	
 	@RequestMapping(value="/403")
