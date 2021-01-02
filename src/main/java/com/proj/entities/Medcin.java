@@ -28,11 +28,6 @@ public class Medcin implements Serializable{
 	@Size(min=8,max=10)
 	private String cin;
 	
-	private int tele;
-	
-	@Size(max=50)
-	private String adress;
-	
 	//@Size(max=50)
 	private String specialite;
 	
@@ -55,15 +50,14 @@ public class Medcin implements Serializable{
 	}
 
 
+
 	public Medcin(@NotNull @Size(min = 3, max = 15) String nom, @NotNull @Size(min = 3, max = 15) String prenom,
-			@NotNull @Size(min = 8, max = 10) String cin, int tele, @Size(max = 50) String adress, String specialite,
-			@Size(min = 3, max = 64) String password, String role, boolean active, List<Consultation> consultations) {
+			@NotNull @Size(min = 8, max = 10) String cin, String specialite, @Size(min = 3, max = 64) String password,
+			String role, boolean active, List<Consultation> consultations) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.cin = cin;
-		this.tele = tele;
-		this.adress = adress;
 		this.specialite = specialite;
 		this.password = password;
 		this.role = role;
@@ -146,30 +140,6 @@ public class Medcin implements Serializable{
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-
-
-	public int getTele() {
-		return tele;
-	}
-
-
-
-	public void setTele(int tele) {
-		this.tele = tele;
-	}
-
-
-
-	public String getAdress() {
-		return adress;
-	}
-
-
-
-	public void setAdress(String adress) {
-		this.adress = adress;
 	}
 
 

@@ -28,7 +28,7 @@
 	<table class="table">
 		<thead>
 			<tr>
-				<th>ID</th><th>Nom</th><th>Prénom</th><th>CIN</th><th>Téléphone</th><th>Adresse</th><th>Type Sang</th>
+				<th>ID</th><th>Nom</th><th>Prénom</th><th>CIN</th><th>Age</th><th>Sexe</th><th>Type Sang</th><th>Téléphone</th><th>Adresse</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -37,9 +37,12 @@
 				<td th:text="${p.nom}"></td>
 				<td th:text="${p.prenom}"></td>
 				<td th:text="${p.cin}"></td>
+				<td th:text="${p.age}"></td>
+				<td th:text="${p.sexe}"></td>
+				<td th:text="${p.typeSang}"></td>
 				<td th:text="${p.tele}"></td>
 				<td th:text="${p.adress}"></td>
-				<td th:text="${p.typeSang}"></td>
+				
 				<td><a th:href="@{/admin/edit(id=${p.id})}">Modifier</a></td>
 				<td><a onclick="return confirm('Etes vous sure?')" th:href="@{/admin/delete(id=${p.id},mc=${mc})}">Supprimer</a></td>
 			</tr>

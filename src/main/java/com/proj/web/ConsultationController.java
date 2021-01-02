@@ -1,9 +1,6 @@
 package com.proj.web;
 
 import java.security.Principal;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,19 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 import com.proj.dao.ConsultationRepository;
 import com.proj.dao.PatientRepository;
@@ -70,19 +59,17 @@ public class ConsultationController {
 		
 		if(p.isPresent()) {
 			Patient patient = p.get();
-			model.addAttribute("patient", patient);
+			model.addAttribute("patient", patient.getId());
+			model.addAttribute("consultation", new Consultation());
 		}
 		
-		//System.out.println(patient.getNom());
-		
-		
-		model.addAttribute("consultation", new Consultation());
 		return "formConsultation";
 	}
 	
 	
 	@RequestMapping(value="/medcin/saveConsultation", method=RequestMethod.POST)
-	public String saveMedcin(Model model, @Valid Consultation consultation, BindingResult bindingResult,HttpServletRequest request, Long id){
+	public String saveConsultation(Model model, @Valid Consultation consultation, BindingResult bindingResult,HttpServletRequest request, 
+									Long id){
 		
 		if(bindingResult.hasErrors()) {
 			return "formConsultation";
@@ -107,13 +94,6 @@ public class ConsultationController {
 		return "redirect:/medcin/patients";
 	}
 	
-	
-	/*@InitBinder
-    public void initBinder(WebDataBinder binder) {
-        SimpleDateFormat sdf = new SimpleDateFormat("MM-dd-yyyy");
-        sdf.setLenient(true);
-        binder.registerCustomEditor(Date.class, new CustomDateEditor(sdf, true));
-    }*/
 	
 	
 }

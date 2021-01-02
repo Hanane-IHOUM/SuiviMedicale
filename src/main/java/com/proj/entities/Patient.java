@@ -28,6 +28,12 @@ public class Patient implements Serializable{
 	@Size(min=8,max=10)
 	private String cin;
 	
+	@NotNull
+	private int age;
+	
+	@NotNull
+	@Size(max=1)
+	private String sexe;
 	
 	private int tele;
 	
@@ -48,14 +54,20 @@ public class Patient implements Serializable{
 	}
 
 
-	public Patient(String nom, String prenom, String cin, int tele, String adress, String typeSang) {
+	public Patient(@NotNull @Size(min = 3, max = 15) String nom, @NotNull @Size(min = 3, max = 15) String prenom,
+			@NotNull @Size(min = 8, max = 10) String cin, @NotNull int age, @NotNull @Size(max = 1) String sexe,
+			int tele, @Size(max = 50) String adress, @NotNull @Size(min = 2, max = 3) String typeSang,
+			List<Consultation> consultations) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.cin = cin;
+		this.age = age;
+		this.sexe = sexe;
 		this.tele = tele;
 		this.adress = adress;
 		this.typeSang = typeSang;
+		this.consultations = consultations;
 	}
 
 
@@ -136,6 +148,26 @@ public class Patient implements Serializable{
 
 	public void setConsultations(List<Consultation> consultations) {
 		this.consultations = consultations;
+	}
+
+
+	public int getAge() {
+		return age;
+	}
+
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+
+	public String getSexe() {
+		return sexe;
+	}
+
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
 	
 	

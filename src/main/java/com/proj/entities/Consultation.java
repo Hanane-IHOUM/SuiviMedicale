@@ -1,7 +1,6 @@
 package com.proj.entities;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -23,10 +22,12 @@ public class Consultation implements Serializable{
 	
 
 	@Temporal(TemporalType.DATE)
-	//@DateTimeFormat(pattern="yyyy-MM-dd")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date date;
 	
-	private String heure;
+	@Temporal(TemporalType.TIME)
+	@DateTimeFormat(pattern = "HH:mm")
+	private Date heure;
 	
 	@NotNull
 	private String description;
@@ -44,8 +45,7 @@ public class Consultation implements Serializable{
 	}
 
 
-
-	public Consultation(Date date, String heure, @NotNull String description, Patient patient, Medcin medecin) {
+	public Consultation(Date date, Date heure, @NotNull String description, Patient patient, Medcin medecin) {
 		super();
 		this.date = date;
 		this.heure = heure;
@@ -53,8 +53,6 @@ public class Consultation implements Serializable{
 		this.patient = patient;
 		this.medecin = medecin;
 	}
-
-
 
 
 
@@ -78,12 +76,12 @@ public class Consultation implements Serializable{
 	}
 
 
-	public String getHeure() {
+	public Date getHeure() {
 		return heure;
 	}
 
 
-	public void setHeure(String heure) {
+	public void setHeure(Date heure) {
 		this.heure = heure;
 	}
 

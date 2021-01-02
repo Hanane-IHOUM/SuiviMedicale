@@ -35,6 +35,21 @@
 						<span class="red" th:errors="${patient.cin}"></span>
 					</div>
 					
+					<div class="form-group">
+						<label class="control-label">Age : </label>
+						<input class="form-control" type="text" name="age" th:value="${patient.age}"/>
+						<span class="red" th:errors="${patient.age}"></span>
+					</div>
+					
+					<div class="form-group">
+						<label class="control-label">Sexe : </label>
+						<select class="form-control" th:field="*{patient.sexe}">
+    						<option th:value="'M'" th:text="Male"></option>
+   							 <option th:value="'F'" th:text="Female"></option>
+						</select>
+						<span class="red" th:errors="${patient.cin}"></span>
+					</div>
+					
 					<div class="form-group">	
 						<label class="control-label">Téléphone : </label>
 						<input class="form-control" type="text" name="tele" th:value="${patient.tele}"/>
@@ -49,7 +64,17 @@
 					
 					<div class="form-group">	
 						<label class="control-label">Type Sang : </label>
-						<input class="form-control" type="text" name="typeSang" th:value="${patient.typeSang}"/>
+						<select class="form-control" th:field="*{patient.typeSang}">
+    						<option th:value="'O+'" th:text="O-positif"></option>
+   							<option th:value="'O-'" th:text="O-négatif"></option>
+   							<option th:value="'A+'" th:text="A-positif"></option>
+   							<option th:value="'A-'" th:text="A-négatif"></option>
+   							<option th:value="'B+'" th:text="B-positif"></option>
+   							<option th:value="'B-'" th:text="B-négatif"></option>
+   							<option th:value="'AB+'" th:text="AB-positif"></option>
+   							<option th:value="'AB-'" th:text="AB-négatif"></option>
+						</select>
+						<!-- <input class="form-control" type="text" name="typeSang" th:value="${patient.typeSang}"/> -->
 						<span class="red" th:errors="${patient.typeSang}"></span>
 					</div>
 					<div>
