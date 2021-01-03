@@ -5,7 +5,7 @@
 		
 <head>
 <meta charset="utf-8"/>
-<title>Patients</title>
+<title>Historique Patient</title>
 <link rel="stylesheet" type="text/css" href="../static/css/bootstrap.min.css"
 		th:href="@{css/bootstrap.min.css}"/>
 		
@@ -17,7 +17,7 @@
 	<div layout:fragment="custom-content">
 	
 	<div class="container spacer">
-	<a th:href="@{/medcin/formConsultation(id=${patient.id})}">Ajouter Consultation</a>
+	<a class="btn btn-primary" th:href="@{/medcin/formConsultation(id=${patient.id})}">Ajouter Consultation</a>
 	<h3>Historique de Patient</h3>
 	<table class="table">
 		<thead>

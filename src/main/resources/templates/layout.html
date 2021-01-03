@@ -22,7 +22,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 					<li><a th:href="@{/admin/form}">Ajouter Patient</a><li>
 					<li><a th:href="@{/admin/medcins}">Chercher Médecin</a><li>
 					<li><a th:href="@{/admin/formMedcin}">Ajouter Médecin</a><li>
-					<li><a th:href="@{/login?logout}" th:inline="text">[[${#httpServletRequest.remoteUser}]]</a><li>
+					<li class="log"><a th:href="@{/login?logout}" th:inline="text">Logout</a><li>
+					
 				</ul>
 			</div>
 		</div>
